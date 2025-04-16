@@ -11,22 +11,10 @@ services:
       - .:/app
       - /app/node_modules
       - next-cache:/app/.next/cache
-    deploy:
-      resources:
-        limits:
-          memory: 4G
-        reservations:
-          memory: 2G
     env_file:
       - .env
     environment:
       - NODE_ENV=development
-    # Add swap if host system has limited memory
-    shm_size: 2gb
-    # Optimize container performance
-    cpu_shares: 1024
-    restart: unless-stopped
-
 volumes:
   next-cache:
     driver: local
