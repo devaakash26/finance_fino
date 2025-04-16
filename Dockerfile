@@ -1,14 +1,15 @@
-FROM node:23-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --prefer-offline --no-audit
 
 COPY . .
 
+RUN npx prisma generate
+
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "run", "dev"] 
+CMD /bin/sh -c "npx prisma generate && npm run dev" 
