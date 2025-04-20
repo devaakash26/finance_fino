@@ -99,7 +99,7 @@ finance/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/finance.git
+git clone https://github.com/devaakash26/finance_fino.git
 cd finance
 ```
 
